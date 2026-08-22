@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "neogt-bot"
+version = "0.8.8"
+description = "The greatest bot for our discord channel"
+authors = ["Big Guzlek", "Small Guzlek from Moscow", "Small Guzlek from Izhevsk"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.14"
+"discord.py" = "^2.6.4"
+python-dotenv = "^1.2.1"
+pydantic-settings = "^2.12.0"
+sqlalchemy = "^2.0.45"
+aiosqlite = "^0.22.1"
+greenlet = "^3.3.0"
+alembic = "^1.17.2"
+groq = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.0"
+black = "^25.12.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 150
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "D",   # pydocstyle - docstring coverage
+]
+ignore = [
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D107", # Missing docstring in __init__
+    "D105", # Missing docstring in magic method (__repr__, __str__, etc.)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+ignore-decorators = ["property"]  # Игнорировать @property методы
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
